@@ -11,6 +11,8 @@ app.use(bodyParser.urlencoded({
   extended: true
 }));
 app.use(express.static("public"));
+const cors = require("cors");
+app.use(cors());
 mongoose.connect("mongodb+srv://whaledarn:texasepic@cluster0.aebky.mongodb.net/travelDB");
 const ridersSchema = {
   _id: String,
