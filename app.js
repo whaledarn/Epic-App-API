@@ -152,8 +152,8 @@ app.post("/drivers",function(req,res){
   const quantity = req.body.quantity;
   const notes = req.body.notes;
 
-  if(id==null)
-  res.send("ERROR");
+  // if(id==null)
+  // res.send("ERROR");
 
   Driver.countDocuments({
     _id: id
