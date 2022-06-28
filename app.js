@@ -146,7 +146,7 @@ app.post("/drivers",function(req,res){
   const lastName = req.body.last;
   const email = req.body.email;
   const phone = req.body.phone;
-  const id = req.body.userid;
+  const _id = req.body.userid;
   const church = req.body.church;
   const time = req.body.time;
   const quantity = req.body.quantity;
@@ -156,14 +156,14 @@ app.post("/drivers",function(req,res){
   // res.send("ERROR");
 
   Driver.countDocuments({
-    _id: id
+    _id: _id
   }, function(err, count) {
     if (count > 0) {
       res.send("This id already exists. Remove your old entry or try another id.");
     } else {
       /*Create a new driver*/
       const driver = new Driver({
-        _id: id,
+        _id: _id,
         firstName: firstName,
         lastName: lastName,
         emailAddress: email,
