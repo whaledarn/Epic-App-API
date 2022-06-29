@@ -100,7 +100,7 @@ app.post("/riders", function(req,res){
     _id: userid
   }, function(err, count) {
     if (count > 0) {
-      res.send("This id already exists. Remove your old entry or try another id.");
+      res.status(500).send({ error: 'Something failed!' });
     } else {
       Driver.findById(driver, function(err, p) { // check if driver exists
         if (!p || p.riders.length >= p.quantity)
@@ -159,7 +159,7 @@ app.post("/drivers",function(req,res){
     _id: _id
   }, function(err, count) {
     if (count > 0) {
-      res.send("This id already exists. Remove your old entry or try another id.");
+      res.status(500).send({ error: 'Something failed!' });
     } else {
       /*Create a new driver*/
       const driver = new Driver({
