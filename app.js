@@ -219,7 +219,7 @@ app.route("/riders/:userid").delete(function(req,res){
       });
     }
     else
-      res.send("ID not found.");
+      res.status(500).send({ error: 'Something failed!' });
   });
 
 
