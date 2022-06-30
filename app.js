@@ -190,7 +190,7 @@ app.route("/riders/:userid").delete(function(req,res){
         _id: rider.driver
       }, function(err, driver) {
         if (err) {
-          console.log(err)
+          res.status(500).send({ error: 'Something failed!' });
         } else {
           let newList = driver.riders.filter(function(value, index, arr) {
             return value != req.params.userid;
@@ -205,7 +205,7 @@ app.route("/riders/:userid").delete(function(req,res){
             returnDocument: 'after'
           }, (err, doc) => {
             if (err) {
-              res.send("Something wrong when updating data!");
+              res.status(500).send({ error: 'Something failed!' });
             }
 
             console.log(doc);
@@ -228,7 +228,7 @@ app.route("/riders/:userid").delete(function(req,res){
 app.route("/drivers/:userid").delete(function(req,res){
   Driver.findById(req.params.userid, function(err, driver) { // finds the driver in list
     if (err || driver == null) {
-      res.send("Could not find driver.");
+      res.status(500).send({ error: 'Something failed!' });
     } else {
       let riders = driver.riders;
       riders.forEach(function(rider) {
