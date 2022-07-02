@@ -67,7 +67,7 @@ app.get("/drivers", function(req,res){
 app.route("/riders/:userid").get(function(req,res){
   Rider.findById(req.params.userid, function(err,r){
     if(!r)
-      res.send("No rider found.");
+      res.status(500).send({ error: 'Something failed!' });
     else{
       res.send(r);
     }
@@ -77,7 +77,7 @@ app.route("/riders/:userid").get(function(req,res){
 app.route("/drivers/:userid").get(function(req,res){
   Driver.findById(req.params.userid, function(err,r){
     if(!r)
-      res.send("No driver found.");
+      res.status(500).send({ error: 'Something failed!' });
     else{
       res.send(r);
     }
